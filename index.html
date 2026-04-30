@@ -824,7 +824,7 @@
         <div class="modal-tags" id="proj-modal-tags" style="margin-bottom:20px;"></div>
 
         <!-- Link to standalone page -->
-        <a id="proj-modal-link" href="#" class="modal-deeper">
+        <a id="proj-modal-link" href="#" target="_blank" rel="noopener" class="modal-deeper" onclick="event.stopPropagation()">
           See the full project page
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -947,7 +947,6 @@
             </div>
             ${isPersonal ? `<div style="margin-top:10px;font-size:0.78rem;color:#c8973a;font-weight:600;">Read more →</div>` : ''}
           </div>`).join('')}</div>`;
-      }
       }
       container.innerHTML = `
         <div class="projects-section-label">Professional</div>${grid(pro, false)}

@@ -30,7 +30,7 @@ const PROJECTS = [
     year: "2024–2026",
     summary: "Automated the collection of financial reporting data for Nike's Digital Payments monthly business reviews. Prior to this project, compiling MBR data took approximately six hours per month across manual pulls from multiple systems. The automated solution reduced that to fifteen minutes — a 95% reduction in time spent — freeing the team to focus on analysis rather than data gathering.",
     tags: ["payments", "automation", "data-analysis", "reporting", "fintech"]
-  }
+  },
   {
     id: "the-shed",
     type: "personal",
@@ -46,6 +46,8 @@ const PROJECTS = [
     standaloneLink: "projects/the-shed.html"
   }
 ];
+
+function getAllProjectTags() {
   const counts = {};
   PROJECTS.forEach(p => {
     p.tags.forEach(tag => {
