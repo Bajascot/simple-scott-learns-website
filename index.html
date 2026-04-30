@@ -8,108 +8,119 @@
   <style>
     /* ── Hero ── */
     .hero {
-      background: var(--navy);
-      padding: 80px 40px 72px;
+      background: var(--bg-mid);
+      padding: 72px 40px 64px;
       position: relative;
       overflow: hidden;
+      border-bottom: 1px solid var(--border);
     }
     .hero::before {
       content: '';
       position: absolute;
-      top: -60px; right: -60px;
-      width: 420px; height: 420px;
-      border-radius: 50%;
-      background: var(--navy-soft);
-      opacity: 0.4;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(200,151,58,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,151,58,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
     }
     .hero::after {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-lt), transparent);
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt), transparent 70%);
     }
     .hero-inner {
       max-width: calc(var(--content-max) + var(--sidebar-w) + var(--gap) + 80px);
       margin: 0 auto;
       position: relative;
       z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
     }
+    .hero-text { flex: 1; min-width: 0; }
     .hero-eyebrow {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent-lt);
-      margin-bottom: 16px;
+      color: var(--gold);
+      margin-bottom: 14px;
     }
     .hero h1 {
       font-family: var(--font-display);
-      font-size: 3.2rem;
-      color: var(--white);
+      font-size: 3rem;
+      color: var(--text-primary);
       line-height: 1.1;
-      max-width: 640px;
     }
     .hero h1 em {
       font-style: italic;
-      color: var(--accent-lt);
+      color: var(--gold-lt);
     }
     .hero-bio {
-      margin-top: 20px;
-      font-size: 1.05rem;
-      color: var(--mist);
+      margin-top: 18px;
+      font-size: 1rem;
+      color: var(--text-secondary);
       font-weight: 300;
-      max-width: 560px;
+      max-width: 520px;
       line-height: 1.75;
     }
     .hero-actions {
       display: flex;
       gap: 12px;
-      margin-top: 32px;
+      margin-top: 28px;
       flex-wrap: wrap;
     }
-    .btn-primary {
-      display: inline-flex;
+    /* Logo circle on the right */
+    .hero-logo-wrap {
+      flex-shrink: 0;
+      position: relative;
+      width: 260px;
+      height: 260px;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 11px 24px;
-      background: var(--accent);
-      color: var(--white);
-      border-radius: 999px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: opacity 0.15s, transform 0.15s;
+      justify-content: center;
     }
-    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 24px;
-      background: transparent;
-      color: var(--cloud);
-      border: 1px solid var(--navy-soft);
-      border-radius: 999px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: border-color 0.15s, color 0.15s;
+    .hero-logo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--navy-soft) 0%, var(--bg-mid) 100%);
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 40px rgba(200,151,58,0.2), inset 0 0 40px rgba(15,31,61,0.6);
     }
-    .btn-secondary:hover { border-color: var(--accent-lt); color: var(--accent-lt); }
+    .hero-logo-wrap img {
+      position: relative;
+      z-index: 1;
+      width: 230px;
+      height: 230px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.6));
+    }
+    @media (max-width: 860px) {
+      .hero-inner { flex-direction: column-reverse; align-items: flex-start; gap: 24px; }
+      .hero-logo-wrap { width: 160px; height: 160px; align-self: center; }
+      .hero-logo-wrap img { width: 136px; height: 136px; }
+      .hero h1 { font-size: 2.2rem; }
+    }
 
     /* ── Intro section ── */
     .intro-section {
-      background: var(--white);
+      background: var(--bg-card);
       border-radius: var(--radius-lg);
       padding: 36px 40px;
-      border: 1px solid var(--cloud);
+      border: 1px solid var(--border);
       box-shadow: var(--shadow-sm);
       margin-bottom: 0;
     }
     .intro-section h2 {
       font-family: var(--font-display);
       font-size: 1.6rem;
-      color: var(--navy);
+      color: var(--text-primary);
       margin-bottom: 14px;
     }
     .intro-section p {
@@ -124,36 +135,38 @@
     .quick-links {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
+      gap: 14px;
+      margin-top: 20px;
     }
     .quick-link-card {
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 18px 20px;
-      background: var(--fog);
-      border: 1px solid var(--cloud);
+      padding: 16px 18px;
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
       transition: background 0.15s, border-color 0.15s, transform 0.15s;
+      color: var(--text-primary);
     }
     .quick-link-card:hover {
-      background: var(--accent-bg);
-      border-color: var(--accent-lt);
+      background: var(--gold-bg);
+      border-color: var(--gold);
       transform: translateY(-1px);
     }
     .quick-link-icon {
-      width: 38px; height: 38px;
+      width: 36px; height: 36px;
       border-radius: var(--radius-md);
-      background: var(--navy);
+      background: var(--navy-soft);
+      border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-    .quick-link-icon svg { color: var(--accent-lt); }
+    .quick-link-icon svg { color: var(--gold-lt); }
     .quick-link-label {
       font-size: 0.875rem;
       font-weight: 600;
-      color: var(--navy);
+      color: var(--text-primary);
     }
     .quick-link-sub {
       font-size: 0.78rem;
@@ -191,19 +204,24 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-inner">
-      <p class="hero-eyebrow">Welcome</p>
-      <h1>Hi, I'm Scott.<br><em>Always learning.</em></h1>
-      <p class="hero-bio">
-        A place where my professional journey and personal curiosity live side by side.
-        From career milestones to weekend projects — this is where I share what I've built,
-        what I've learned, and what I'm working on next.
-      </p>
-      <div class="hero-actions">
-        <a href="timeline.html" class="btn-primary">
-          View my timeline
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="about.html" class="btn-secondary">About me</a>
+      <div class="hero-text">
+        <p class="hero-eyebrow">Welcome</p>
+        <h1>Hi, I'm Scott.<br><em>Always learning.</em></h1>
+        <p class="hero-bio">
+          A place where my professional journey and personal curiosity live side by side.
+          From career milestones to weekend projects — this is where I share what I've built,
+          what I've learned, and what I'm working on next.
+        </p>
+        <div class="hero-actions">
+          <a href="timeline.html" class="btn-primary">
+            View my timeline
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="about.html" class="btn-secondary">About me</a>
+        </div>
+      </div>
+      <div class="hero-logo-wrap">
+        <img src="images/logo.png" alt="Simple Scott Learns">
       </div>
     </div>
   </section>
