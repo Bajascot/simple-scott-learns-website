@@ -201,11 +201,11 @@
     <a class="nav-brand" href="index.html">Simple <span>Scott</span> Learns</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#timeline">Timeline</a></li>
       <li><a href="deeper-dive.html" class="active">Deeper Dive</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <div class="nav-divider"></div>
     <div class="nav-social">
@@ -306,7 +306,18 @@
 
     function renderTagCloud() {
       const cloud = document.getElementById('tag-cloud');
-      const tags = getAllTags();
+      // Only count tags from progressions (not top-level job tags)
+      const counts = {};
+      JOBS.forEach(job => {
+        job.progressions.forEach(p => {
+          p.tags.forEach(tag => {
+            counts[tag] = (counts[tag] || 0) + 1;
+          });
+        });
+      });
+      const tags = Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .map(([tag, count]) => ({ tag, count }));
       cloud.innerHTML = tags.map(({ tag, count }) => `
         <span class="tag${tag === activeTag ? ' active' : ''}" onclick="setFilter('${tag}')">
           ${tag}<span class="tag-count">${count}</span>

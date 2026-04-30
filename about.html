@@ -99,11 +99,11 @@
     <a class="nav-brand" href="index.html">Simple <span>Scott</span> Learns</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="index.html#about" class="active">About</a></li>
+      <li><a href="index.html#timeline">Timeline</a></li>
       <li><a href="deeper-dive.html">Deeper Dive</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <div class="nav-divider"></div>
     <div class="nav-social">
@@ -202,7 +202,7 @@
     const cloud = document.getElementById('tag-cloud');
     const tags = getAllTags();
     cloud.innerHTML = tags.map(({ tag, count }) => `
-      <a href="timeline.html" class="tag">
+      <a href="index.html#timeline" class="tag">
         ${tag}<span class="tag-count">${count}</span>
       </a>
     `).join('');
