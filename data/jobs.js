@@ -12,6 +12,7 @@ const JOBS = [
     endYear: 2009,
     title: "IT Director",
     summary: "Sole IT leader for a national commercial construction company with offices in Portland and Seattle. Owned all technology infrastructure — from an on-premise data center to field worker support across multiple remote job sites.",
+    modalDescription: "Served as the single IT resource for a national commercial construction company operating across Oregon and Washington. Owned everything from the on-premise data center and networking infrastructure to email systems, hardware, and phone support for field supervisors across multiple active job sites. One of the most impactful contributions was building custom ERP reports that gave leadership real visibility into project and operational data for the first time. This role built a foundation of hands-on technical ownership and problem-solving under constraints that shaped everything that followed.",
     tags: ["it-infrastructure", "leadership", "erp", "networking", "construction"],
     progressions: [
       {
@@ -31,7 +32,8 @@ const JOBS = [
     endYear: 2015,
     title: "Product Manager",
     summary: "Joined Viewpoint as their sole custom report support specialist and progressed through four distinct roles over six years — from report support to report design, scrum master, and ultimately product manager for a newly formed team.",
-    tags: ["product-management", "agile", "scrum", "reporting", "construction-software", "leadership"],
+    modalDescription: "Joined Viewpoint as the only person supporting custom reporting for their construction ERP platform, bringing direct experience from having used it at Market Contractors. Over six years progressed through four roles — report support, report designer, scrum master across two teams, and finally product manager for a newly formed team. Introduced agile delivery practices to the engineering team and grew into full backlog ownership, roadmap definition, and feature delivery. This role marked the formal start of a product management career built on unusually deep technical and customer context.",
+    tags: ["product-management", "agile-scrum", "leadership"],
     progressions: [
       {
         start: "2009",
@@ -71,7 +73,8 @@ const JOBS = [
     endYear: 2015,
     title: "Software Developer / Implementation Consultant",
     summary: "Joined a consulting firm specializing in on-premise Viewpoint implementations, applying deep platform knowledge to both implement features for clients and manage concurrent project delivery.",
-    tags: ["consulting", "viewpoint", "implementation", "project-management", "construction-software"],
+    modalDescription: "Joined Tilson to apply deep Viewpoint platform expertise in a client-facing consulting capacity, helping companies transition onto the system. Managed multiple concurrent implementation projects simultaneously, combining hands-on development with project oversight. The role was a direct application of everything learned at Viewpoint — knowing the product from the inside made it possible to implement faster and troubleshoot more effectively than most consultants. A short but focused chapter that reinforced the value of deep domain knowledge in delivery roles.",
+    tags: ["consulting", "implementation", "project-management"],
     progressions: [
       {
         start: "Early 2015",
@@ -90,7 +93,8 @@ const JOBS = [
     endYear: 2016,
     title: "Scrum Master",
     summary: "Served as Scrum Master for a software development team building Caller Dashboard — an HP product designed to unify phone, email, and text conversations across laptop and mobile devices.",
-    tags: ["scrum", "agile", "product-development", "hp", "leadership"],
+    modalDescription: "Facilitated agile delivery for a team building Caller Dashboard — an HP-integrated product designed to ship pre-installed on HP laptops, unifying phone, email, and text communication across devices. Ran all sprint ceremonies, managed delivery cadence, and worked closely with product leadership to keep the backlog prioritized and the team protected from scope creep. This was a 0→1 product environment with high stakeholder visibility, which sharpened skills in managing expectations and keeping a team focused when everything feels urgent. A formative role in understanding how good process enables teams to do their best work.",
+    tags: ["0-1-development", "stakeholder-management", "agile-scrum"],
     progressions: [
       {
         start: "Mid 2015",
@@ -109,7 +113,8 @@ const JOBS = [
     endYear: null,
     title: "Senior Product Manager, Digital Payment Services",
     summary: "Ten-year Nike career spanning four major product domains — Search, SEO & Data Tagging, Digital Promotions, and Digital Payment Services. Progressed from Product Owner to Senior Product Manager, delivering globally scaled platforms and measurable business outcomes including a $37M incremental revenue result.",
-    tags: ["product-management", "nike", "leadership", "agile", "ecommerce", "global", "saas"],
+    modalDescription: "Spent ten years at Nike across four distinct product domains — Search, SEO & Data Tagging, Digital Promotions, and Digital Payments. Began as a Product Owner on Nike's Endeca-based search platform, onboarding new geos and building search strategies, then led a new team focused on SEO infrastructure and product data signaling to improve organic discoverability globally. Transitioned into Digital Promotions where the Promotion Admin Tool was built from its first demo into the definitive global system of record used across every Nike geo. The final chapter has been owning Nike's full payment product stack — delivering a $37M incremental revenue outcome through the PayPal/Braintree rollout, leading the Canada go-live, and managing strategic relationships with 13+ payment vendors worldwide.",
+    tags: ["vendor-management", "payments-fintech", "global-ecommerce", "team-leadership"],
     progressions: [
       {
         start: "2016",

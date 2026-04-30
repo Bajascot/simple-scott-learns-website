@@ -595,18 +595,19 @@
         <div class="about-skills">
           <h3>Areas of expertise</h3>
           <div class="skills-list">
-            <span class="skill-pill">Product strategy</span>
+            <span class="skill-pill">Vendor Management</span>
+            <span class="skill-pill">Payments / Fintech</span>
+            <span class="skill-pill">Global Ecommerce</span>
+            <span class="skill-pill">Team Leadership</span>
+            <span class="skill-pill">0→1 Development</span>
+            <span class="skill-pill">Stakeholder Management</span>
             <span class="skill-pill">Agile / Scrum</span>
-            <span class="skill-pill">Payments &amp; fintech</span>
-            <span class="skill-pill">Global ecommerce</span>
-            <span class="skill-pill">Team leadership</span>
-            <span class="skill-pill">A/B testing</span>
-            <span class="skill-pill">SEO &amp; search</span>
-            <span class="skill-pill">Data analysis</span>
-            <span class="skill-pill">Vendor management</span>
-            <span class="skill-pill">SQL</span>
-            <span class="skill-pill">Roadmapping</span>
-            <span class="skill-pill">Stakeholder management</span>
+            <span class="skill-pill">Consulting</span>
+            <span class="skill-pill">Implementation</span>
+            <span class="skill-pill">Project Management</span>
+            <span class="skill-pill">Product Management</span>
+            <span class="skill-pill">IT Infrastructure</span>
+            <span class="skill-pill">ERP</span>
           </div>
         </div>
       </div>
@@ -769,7 +770,7 @@
       document.getElementById('modal-job-title').textContent = job.title;
       document.getElementById('modal-dates').textContent     = `${job.startYear} – ${job.endYear || 'Present'}`;
       document.getElementById('modal-location').textContent  = job.location;
-      document.getElementById('modal-summary').textContent   = job.summary;
+      document.getElementById('modal-summary').textContent   = job.modalDescription || job.summary;
       document.getElementById('modal-tags').innerHTML        =
         job.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
       document.getElementById('modal-overlay').classList.add('open');
