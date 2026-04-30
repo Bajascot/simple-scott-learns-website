@@ -83,8 +83,9 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 32px;
-  gap: 0;
+  gap: 16px;
   box-shadow: 0 2px 20px rgba(0,0,0,0.5);
 }
 
@@ -95,8 +96,8 @@ img { max-width: 100%; display: block; }
   color: var(--text-primary);
   letter-spacing: 0.01em;
   white-space: nowrap;
-  margin-right: auto;
   text-decoration: none;
+  flex-shrink: 0;
 }
 .nav-brand span {
   color: var(--gold);
