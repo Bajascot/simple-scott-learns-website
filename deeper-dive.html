@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deeper Dive — Simple Scott Learns</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Deeper Dive specific styles ── */
+    .jobs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* Job block */
+    .job-block {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--cloud);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .job-header {
+      background: var(--navy);
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .job-header-left h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .job-header-left .job-top-title {
+      font-size: 0.875rem;
+      color: var(--mist);
+      margin-top: 4px;
+      font-weight: 300;
+    }
+    .job-header-right {
+      text-align: right;
+    }
+    .job-years {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-lt);
+      letter-spacing: 0.04em;
+    }
+    .job-location {
+      font-size: 0.8rem;
+      color: var(--mist);
+      margin-top: 2px;
+    }
+
+    .job-summary {
+      background: var(--white);
+      padding: 20px 32px;
+      border-bottom: 1px solid var(--fog);
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Progressions */
+    .progressions {
+      background: var(--white);
+      padding: 8px 32px 32px;
+    }
+
+    .progression-item {
+      display: grid;
+      grid-template-columns: 1px 1fr;
+      gap: 0 28px;
+      position: relative;
+      margin-top: 28px;
+    }
+
+    .progression-spine {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .progression-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 6px;
+      position: relative;
+      z-index: 1;
+    }
+    .progression-line {
+      width: 1px;
+      flex: 1;
+      background: var(--cloud);
+      margin-top: 6px;
+      min-height: 20px;
+    }
+    .progression-item:last-child .progression-line {
+      display: none;
+    }
+
+    .progression-body {}
+
+    .progression-period {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .progression-dates {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-lt);
+      border-radius: 999px;
+      padding: 2px 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .progression-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--navy);
+    }
+
+    .progression-description {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    /* No results */
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+    .no-results h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: var(--slate);
+    }
+    .clear-filter {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 8px 20px;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s;
+    }
+    .clear-filter:hover { opacity: 0.85; }
+
+    /* Active filter banner */
+    .filter-banner {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-lt);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      margin-bottom: 24px;
+      font-size: 0.875rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .filter-banner.visible { display: flex; }
+    .filter-banner button {
+      margin-left: auto;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--accent);
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 0 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="nav-brand" href="index.html">Simple <span>Scott</span> Learns</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="deeper-dive.html" class="active">Deeper Dive</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-divider"></div>
+    <div class="nav-social">
+      <a href="#" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+        LinkedIn
+      </a>
+      <a href="#" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <p class="section-label">Career detail</p>
+    <h1>Deeper Dive</h1>
+    <p>A closer look at each role — what I did, how I grew, and what I learned along the way.</p>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="layout">
+    <main class="main-content" id="main">
+
+      <!-- Active filter banner -->
+      <div class="filter-banner" id="filter-banner">
+        Showing entries tagged: <strong id="active-tag-label"></strong>
+        <button onclick="clearFilter()" aria-label="Clear filter">×</button>
+      </div>
+
+      <!-- Jobs list -->
+      <div class="jobs-list" id="jobs-list" aria-live="polite"></div>
+
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Tag filter">
+      <div class="sidebar-card">
+        <h3>Browse by tag</h3>
+        <div class="tag-cloud" id="tag-cloud"></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Data + logic -->
+  <script src="data/jobs.js"></script>
+  <script>
+    let activeTag = null;
+
+    function renderJobs(jobs) {
+      const list = document.getElementById('jobs-list');
+      if (!jobs.length) {
+        list.innerHTML = `
+          <div class="no-results">
+            <h3>No entries found</h3>
+            <p>No roles match the tag "<strong>${activeTag}</strong>".</p>
+            <button class="clear-filter" onclick="clearFilter()">Clear filter</button>
+          </div>`;
+        return;
+      }
+      list.innerHTML = jobs.map(job => `
+        <div class="job-block" id="${job.id}">
+          <div class="job-header">
+            <div class="job-header-left">
+              <h2>${job.company}</h2>
+              <div class="job-top-title">${job.title}</div>
+            </div>
+            <div class="job-header-right">
+              <div class="job-years">${job.startYear} – ${job.endYear || 'Present'}</div>
+              <div class="job-location">${job.location}</div>
+            </div>
+          </div>
+          <div class="job-summary">${job.summary}</div>
+          <div class="progressions">
+            ${job.progressions.map(p => `
+              <div class="progression-item">
+                <div class="progression-spine">
+                  <div class="progression-dot"></div>
+                  <div class="progression-line"></div>
+                </div>
+                <div class="progression-body">
+                  <div class="progression-period">
+                    <span class="progression-dates">${p.start} – ${p.end}</span>
+                    <span class="progression-title">${p.title}</span>
+                  </div>
+                  <p class="progression-description">${p.description}</p>
+                  <div class="card-tags">
+                    ${p.tags.map(t => `<span class="tag${t === activeTag ? ' active' : ''}" onclick="setFilter('${t}')">${t}</span>`).join('')}
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderTagCloud() {
+      const cloud = document.getElementById('tag-cloud');
+      const tags = getAllTags();
+      cloud.innerHTML = tags.map(({ tag, count }) => `
+        <span class="tag${tag === activeTag ? ' active' : ''}" onclick="setFilter('${tag}')">
+          ${tag}<span class="tag-count">${count}</span>
+        </span>
+      `).join('');
+    }
+
+    function setFilter(tag) {
+      activeTag = (activeTag === tag) ? null : tag;
+      applyFilter();
+    }
+
+    function clearFilter() {
+      activeTag = null;
+      applyFilter();
+    }
+
+    function applyFilter() {
+      const banner = document.getElementById('filter-banner');
+      const label  = document.getElementById('active-tag-label');
+      if (activeTag) {
+        banner.classList.add('visible');
+        label.textContent = activeTag;
+      } else {
+        banner.classList.remove('visible');
+      }
+      renderJobs(filterByTag(activeTag));
+      renderTagCloud();
+    }
+
+    // Init
+    renderJobs(JOBS);
+    renderTagCloud();
+  </script>
+
+</body>
+</html>
