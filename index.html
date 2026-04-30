@@ -616,7 +616,7 @@
       <h2 class="section-title">About Me</h2>
       <div class="about-grid">
         <div class="about-text">
-          <p>I've been a husband for 23 years, a father for 16, and a Product Leader for 13. Each of those roles has taught me the same lesson: the goal is only half the story.</p>
+          <p>I've been a husband for 23 years, a father for 16, and a Product Leader for 13 — and somewhere along the way I may have developed a slight 3D printing habit.</p>
           <p>The other half is how you get there — the health of the team, the clarity of the process, the stability of the foundation you build on. I've spent my career asking not just why a product works the way it does, but why a team works the way it does. Those two questions are more connected than most people realize.</p>
           <p>I build products that are delightful and teams that are self-reliant. The measure of a good leader, to me, is that things still work well when you're not in the room.</p>
         </div>
@@ -769,7 +769,69 @@
     </div>
   </div>
 
-  <!-- ── DATA + LOGIC ── -->
+  <!-- ── PERSONAL PROJECT MODAL ── -->
+  <div class="modal-overlay" id="project-modal-overlay" onclick="closeProjectModal(event)">
+    <div class="modal" id="project-modal" style="max-width:680px;">
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <h2 id="proj-modal-title"></h2>
+          <div class="modal-title" id="proj-modal-year"></div>
+        </div>
+        <div class="modal-header-right">
+          <div id="proj-modal-status"></div>
+        </div>
+        <button class="modal-close" onclick="closeProjectModal()" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body">
+
+        <!-- What Was the Need -->
+        <div class="modal-other-half" style="margin-bottom:16px;">
+          <div class="modal-other-half-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            What Was the Need
+          </div>
+          <p id="proj-modal-need" style="font-style:normal;"></p>
+        </div>
+
+        <!-- Why the Solution -->
+        <div class="modal-other-half" style="margin-bottom:16px;">
+          <div class="modal-other-half-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Why the Solution
+          </div>
+          <p id="proj-modal-solution" style="font-style:normal;"></p>
+        </div>
+
+        <!-- The Other Half of the Story -->
+        <div class="modal-other-half" style="margin-bottom:20px;">
+          <div class="modal-other-half-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+            The Other Half of the Story
+          </div>
+          <p id="proj-modal-other"></p>
+        </div>
+
+        <!-- 2x2 Photo Grid -->
+        <div id="proj-modal-photos" style="display:none;margin-bottom:20px;">
+          <div class="modal-other-half-title" style="margin-bottom:12px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Photos
+          </div>
+          <div id="proj-modal-photo-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"></div>
+        </div>
+
+        <!-- Tags -->
+        <div class="modal-tags" id="proj-modal-tags" style="margin-bottom:20px;"></div>
+
+        <!-- Link to standalone page -->
+        <a id="proj-modal-link" href="#" class="modal-deeper">
+          See the full project page
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+      </div>
+    </div>
+  </div>
   <script src="data/jobs.js"></script>
   <script src="data/projects.js"></script>
   <script>
@@ -820,9 +882,45 @@
       document.body.style.overflow = '';
     }
 
+    // ── Personal Project Modal ───────────────────────────────
+    function openProjectModal(id) {
+      const p = PROJECTS.find(p => p.id === id);
+      if (!p) return;
+      document.getElementById('proj-modal-title').textContent   = p.title;
+      document.getElementById('proj-modal-year').textContent    = p.year;
+      document.getElementById('proj-modal-status').innerHTML    = `<span class="project-status ${p.status === 'completed' ? 'status-completed' : 'status-in-progress'}">${p.status === 'completed' ? 'Completed' : 'In progress'}</span>`;
+      document.getElementById('proj-modal-need').textContent    = p.whatWasTheNeed || '';
+      document.getElementById('proj-modal-solution').textContent = p.whyTheSolution || '';
+      document.getElementById('proj-modal-other').textContent   = p.otherHalf || '';
+      document.getElementById('proj-modal-tags').innerHTML      = (p.tags || []).map(t => `<span class="modal-tag">${t}</span>`).join('');
+      document.getElementById('proj-modal-link').href           = p.standaloneLink || '#';
+
+      // Photos
+      const photoGrid = document.getElementById('proj-modal-photo-grid');
+      const photoWrap = document.getElementById('proj-modal-photos');
+      if (p.images && p.images.length) {
+        photoGrid.innerHTML = p.images.slice(0,4).map(src => `
+          <img src="${src}" alt="" style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:4/3;">
+        `).join('');
+        photoWrap.style.display = 'block';
+      } else {
+        photoWrap.style.display = 'none';
+      }
+
+      document.getElementById('project-modal-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal(e) {
+      if (e && e.target !== document.getElementById('project-modal-overlay') && !e.target.classList.contains('modal-close')) return;
+      document.getElementById('project-modal-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         document.getElementById('modal-overlay').classList.remove('open');
+        document.getElementById('project-modal-overlay').classList.remove('open');
         document.body.style.overflow = '';
       }
     });
@@ -832,9 +930,10 @@
       const container = document.getElementById('projects-container');
       const pro = PROJECTS.filter(p => p.type === 'professional');
       const personal = PROJECTS.filter(p => p.type === 'personal');
-      function grid(items) {
+      function grid(items, isPersonal) {
         return `<div class="projects-grid">${items.map(p => `
-          <div class="project-card">
+          <div class="project-card${isPersonal ? ' project-card-personal' : ''}" 
+               ${isPersonal ? `onclick="openProjectModal('${p.id}')" style="cursor:pointer;"` : ''}>
             <div class="project-card-top">
               <div class="project-title">${p.title}</div>
               <span class="project-status ${p.status === 'completed' ? 'status-completed' : 'status-in-progress'}">
@@ -846,11 +945,13 @@
             <div class="project-tags">
               ${p.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}
             </div>
+            ${isPersonal ? `<div style="margin-top:10px;font-size:0.78rem;color:#c8973a;font-weight:600;">Read more →</div>` : ''}
           </div>`).join('')}</div>`;
       }
+      }
       container.innerHTML = `
-        <div class="projects-section-label">Professional</div>${grid(pro)}
-        <div class="projects-section-label">Personal</div>${grid(personal)}
+        <div class="projects-section-label">Professional</div>${grid(pro, false)}
+        <div class="projects-section-label">Personal</div>${grid(personal, true)}
       `;
     }
 
