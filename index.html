@@ -703,7 +703,7 @@
           </div>
         </div>
         <div>
-          <form id="contact-form" onsubmit="handleSubmit(event)" novalidate>
+          <form id="contact-form" action="https://formspree.io/f/xgodepzo" method="POST">
             <div class="form-group">
               <label for="fname">Your name</label>
               <input type="text" id="fname" name="name" placeholder="Jane Smith" required>
@@ -720,7 +720,6 @@
               Send message
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
-            <div class="form-success" id="form-success">Thanks for your message! I'll be in touch soon.</div>
           </form>
         </div>
       </div>
@@ -952,13 +951,6 @@
         <div class="projects-section-label">Professional</div>${grid(pro, false)}
         <div class="projects-section-label">Personal</div>${grid(personal, true)}
       `;
-    }
-
-    // ── Contact ─────────────────────────────────────────────
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.getElementById('form-success').classList.add('visible');
-      e.target.reset();
     }
 
     // ── Active nav on scroll ────────────────────────────────
