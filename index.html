@@ -237,14 +237,19 @@
       cursor: pointer;
       transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      flex-direction: column;
+      gap: 12px;
     }
     .tl-card:hover {
       border-color: #c8973a;
       transform: translateY(-1px);
       box-shadow: 0 4px 20px rgba(200,151,58,0.1);
+    }
+    .tl-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
     }
     .tl-card-left { flex: 1; min-width: 0; }
     .tl-company {
@@ -254,15 +259,7 @@
     }
     .tl-title {
       font-size: 0.82rem; color: #566880;
-      font-weight: 500; margin-bottom: 8px;
-    }
-    .tl-summary {
-      font-size: 0.85rem; color: #9aaabf;
-      line-height: 1.6;
-    }
-    .tl-card-right {
-      display: flex; flex-direction: column;
-      align-items: flex-end; gap: 8px; flex-shrink: 0;
+      font-weight: 500;
     }
     .tl-dates {
       font-size: 0.78rem; font-weight: 700;
@@ -271,8 +268,20 @@
       border: 1px solid rgba(200,151,58,0.25);
       border-radius: 999px; padding: 3px 11px;
       white-space: nowrap;
+      flex-shrink: 0;
     }
-    .tl-tags { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
+    .tl-summary {
+      font-size: 0.85rem; color: #9aaabf;
+      line-height: 1.6;
+    }
+    .tl-card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .tl-tags { display: flex; gap: 5px; flex-wrap: wrap; }
     .tl-tag {
       font-size: 0.66rem; font-weight: 600;
       letter-spacing: 0.05em; text-transform: uppercase;
@@ -283,6 +292,7 @@
     .tl-arrow {
       color: #2a3750; font-size: 1rem;
       transition: color 0.15s, transform 0.15s;
+      flex-shrink: 0;
     }
     .tl-card:hover .tl-arrow { color: #c8973a; transform: translateX(3px); }
 
@@ -325,12 +335,16 @@
     }
     .modal-header {
       background: #0f1f3d;
-      padding: 24px 28px;
+      padding: 20px 24px;
       border-bottom: 1px solid #2a3750;
-      display: flex; justify-content: space-between; align-items: flex-start;
-      gap: 16px;
+      display: flex; align-items: flex-start;
+      gap: 12px;
       position: sticky; top: 0; z-index: 1;
       border-radius: 13px 13px 0 0;
+    }
+    .modal-header-left {
+      flex: 1;
+      min-width: 0;
     }
     .modal-header-left h2 {
       font-family: 'DM Serif Display', Georgia, serif;
@@ -349,10 +363,11 @@
       font-size: 0.75rem; color: #566880; margin-top: 2px;
     }
     .modal-close {
-      position: absolute; top: 16px; right: 20px;
+      flex-shrink: 0;
       background: none; border: none; cursor: pointer;
       color: #566880; font-size: 1.4rem; line-height: 1;
       transition: color 0.15s; padding: 4px;
+      margin-top: -2px;
     }
     .modal-close:hover { color: #e8edf5; }
     .modal-body { padding: 28px; }
@@ -838,17 +853,19 @@
     // ── Timeline ────────────────────────────────────────────
     function renderTimeline() {
       const list = document.getElementById('timeline-list');
-      const jobs = [...JOBS].reverse(); // newest first
+      const jobs = [...JOBS]; // oldest first — tells the career journey
       list.innerHTML = jobs.map(job => `
         <div class="tl-card" onclick="openModal('${job.id}')" role="button" tabindex="0"
              onkeydown="if(event.key==='Enter')openModal('${job.id}')">
-          <div class="tl-card-left">
-            <div class="tl-company">${job.company}</div>
-            <div class="tl-title">${job.title}</div>
-            <div class="tl-summary">${job.summary}</div>
-          </div>
-          <div class="tl-card-right">
+          <div class="tl-card-top">
+            <div class="tl-card-left">
+              <div class="tl-company">${job.company}</div>
+              <div class="tl-title">${job.title}</div>
+            </div>
             <span class="tl-dates">${job.startYear} – ${job.endYear || 'Present'}</span>
+          </div>
+          <div class="tl-summary">${job.summary}</div>
+          <div class="tl-card-bottom">
             <div class="tl-tags">
               ${job.tags.slice(0,4).map(t => `<span class="tl-tag">${t}</span>`).join('')}
             </div>
