@@ -31,10 +31,10 @@ const JOBS = [
     location: "Portland, OR",
     startYear: 2009,
     endYear: 2015,
-    title: "Product Manager",
-    summary: "Joined Viewpoint as their sole custom report support specialist and progressed through four distinct roles over six years — from report support to report design, scrum master, and ultimately product manager for a newly formed team.",
-    modalDescription: "Joined Viewpoint as the only person supporting custom reporting for their construction ERP platform, bringing direct experience from having used it at Market Contractors. Over six years progressed through four roles — report support, report designer, scrum master across two teams, and finally product manager for a newly formed team. Introduced agile delivery practices to the engineering team and grew into full backlog ownership, roadmap definition, and feature delivery. This role marked the formal start of a product management career built on unusually deep technical and customer context.",
-    otherHalf: "Six years, four roles — but the real story is about learning to see the product from every angle before ever calling myself a product manager. Starting in support meant understanding what actually frustrated customers. Moving into design meant understanding what engineers needed. Becoming a scrum master meant understanding what teams needed to do their best work. By the time the PM role came, the foundation was already built.",
+    title: "Senior Product Manager / Product Team Mentor",
+    summary: "Joined Viewpoint as their sole custom report support specialist and progressed through five distinct roles over six years — from report support to report design, scrum master, and ultimately Senior Product Manager and Product Team Mentor for a newly formed team.",
+    modalDescription: "Joined Viewpoint as the only person supporting custom reporting for their construction ERP platform, bringing direct experience from having used it at Market Contractors. Over six years progressed through five roles — report support, report designer, scrum master across two teams, product manager, and finally Senior PM with a formal mentoring responsibility for three junior PMs. Introduced agile delivery practices to the engineering team and grew into full backlog ownership, roadmap definition, and feature delivery. This role marked the formal start of both a product management career and a leadership identity built on developing others.",
+    otherHalf: "Six years, five roles — but the real story is about learning to see the product from every angle before ever calling myself a product manager. Starting in support meant understanding what actually frustrated customers. Moving into design meant understanding what engineers needed. Becoming a scrum master meant understanding what teams needed to do their best work. And mentoring three junior PMs taught me that you don't really know something until you have to explain it to someone who's never done it before.",
     tags: ["product-management", "agile-scrum", "leadership"],
     progressions: [
       {
@@ -61,9 +61,9 @@ const JOBS = [
       {
         start: "2013",
         end: "2015",
-        title: "Product Manager",
-        description: "Moved into a full Product Manager role for a newly formed team at Viewpoint. Responsible for defining the product roadmap, writing requirements, prioritizing the backlog, and working with engineering to deliver features. This role marked the formal beginning of a product management career built on a foundation of deep technical and customer knowledge.",
-        tags: ["roadmapping", "stakeholder-management", "leadership", "feature-delivery"]
+        title: "Senior Product Manager / Product Team Mentor",
+        description: "Took on a dual role leading a newly formed product team while simultaneously mentoring three junior product managers as part of a new program designed to instill confidence and grow upcoming PMs within the organization. Coached each PM through the full product ownership lifecycle — how to own a product end to end, how to add value to products already in flight, and how to work with stakeholders to gather requirements, assess feature value, and prioritize and deliver. The program was a deliberate investment in the next generation of product leadership at Viewpoint.",
+        tags: ["roadmapping", "stakeholder-management", "leadership", "feature-delivery", "mentoring", "coaching"]
       }
     ]
   },
@@ -116,9 +116,9 @@ const JOBS = [
     startYear: 2016,
     endYear: 2026,
     title: "Lead Product Manager, Digital Payment Services",
-    summary: "Ten-year Nike career spanning four major product domains — Search, SEO & Data Tagging, Digital Promotions, and Digital Payment Services. Progressed from Product Manager to Lead Product Manager, delivering globally scaled platforms and measurable business outcomes including a $37M incremental revenue result.",
-    modalDescription: "Ten years at Nike across four distinct product domains — Search, SEO & Data Tagging, Digital Promotions, and Digital Payment Services. Started as a Product Manager on Nike's Endeca search platform, onboarding new geos and building search strategies, then led a team building SEO infrastructure to improve Nike's organic product discoverability globally. Transitioned into Digital Promotions where a new Digital Promotions Management Tool was built from prototype to the global system of record used across every Nike geo, driving measurable improvements in consumer engagement, UPT, and checkout success rates. Concluded as Lead Product Manager owning Nike's full payment product stack — delivering $37M in annualized incremental demand, leading geo expansions into Australia and Canada, and managing strategic relationships with 13+ payment vendors worldwide.",
-    otherHalf: "Ten years is long enough to see yourself change. The early years at Nike were about learning to operate at scale — bigger teams, bigger stakes, more stakeholders than I'd ever managed before. The middle years, in Promotions, were about building something durable and then having the discipline to let it go. The final chapter, in Payments, taught me that at scale, the way you show up in the small moments — a vendor call, an incident review, a sprint retro — is what determines whether the big ones go well. The product is almost never the hardest part.",
+    summary: "Ten-year Nike career spanning five major product domains — Search, SEO & Data Tagging, Digital Promotions, Retail Payments, and Digital Payment Services. Progressed from Product Manager to Lead Product Manager, delivering globally scaled platforms and measurable business outcomes including a $37M incremental revenue result.",
+    modalDescription: "Ten years at Nike across five distinct product domains — Search, SEO & Data Tagging, Digital Promotions, Retail Payments, and Digital Payment Services. Started as a Product Manager on Nike's Endeca search platform, then led SEO infrastructure to improve organic discoverability globally. Transitioned into Digital Promotions to build the Digital Promotions Management Tool from prototype to global system of record, before moving into Retail Payments to lead both legacy and next-generation POS development across Nike's global store network. Concluded as Lead Product Manager owning Nike's full digital payment product stack — delivering $37M in annualized incremental demand and leading geo expansions into Australia and Canada.",
+    otherHalf: "Ten years is long enough to see yourself change. The early years at Nike were about learning to operate at scale — bigger teams, bigger stakes, more stakeholders than I'd ever managed before. The middle years, in Promotions and Retail, were about building something durable and then having the discipline to let it go. The final chapter, in Payments, taught me that at scale, the way you show up in the small moments — a vendor call, an incident review, a sprint retro — is what determines whether the big ones go well. The product is almost never the hardest part.",
     tags: ["vendor-management", "payments-fintech", "global-ecommerce", "team-leadership"],
     progressions: [
       {
@@ -137,10 +137,17 @@ const JOBS = [
       },
       {
         start: "2020",
-        end: "2024",
+        end: "2023",
         title: "Senior Product Manager, Digital Promotions",
         description: "Primary PM for Nike's Digital Promotions platform — built a new Digital Promotions Management Tool from its first prototype to the globally deployed system of record used across every Nike geo. Allowing Digital Experiences teams to better run promotion campaigns leading to an elevation of consumer engagement, UPT, and checkout success rates. Iteratively added support for new promotion strategies determined by Digital Experiences team feedback along with customer engagement. Expanded scope to include a multi-phase Promotion Data Emission framework to allow for more automation and better customer matching, a security model overhaul, and an intern-led UI refresh proposal validated by Nike's design team. Concluded with a structured 3-session knowledge transfer series in December 2023, fully onboarding the incoming team with all PRDs, roadmaps, and future plans documented.",
         tags: ["product-management", "team-leadership", "consumer-engagement", "0-1-development"]
+      },
+      {
+        start: "2023",
+        end: "2024",
+        title: "Senior Product Manager, Retail Payments",
+        description: "Led two development teams responsible for Nike's retail payment ecosystem across flagship, in-line, and outlet stores globally. The first team owned the legacy vendor-delivered POS system — a split implementation running on fixed front-counter terminals interfacing with payment hardware, and a mobile implementation running on Apple devices with portable card readers carried by store employees. Each ran on a separate codebase. The second team was building Nike's new in-house POS to replace the legacy system — a unified single-silo solution deployable to both fixed and mobile terminals. Worked closely with store employees to determine carry-over features, identify what could be retired, and define the new system's requirements from the ground up. Began laying the groundwork for a transition away from mobile card readers toward NFC-based payments directly on Apple devices. Additionally led negotiations with Nike's payment vendor to replace aging fixed payment terminals with newer models across US and European stores — working with the vendor and Nike leadership to align on terminal selection and negotiate pricing and support terms.",
+        tags: ["payments", "retail", "pos-systems", "vendor-management", "stakeholder-management", "team-leadership"]
       },
       {
         start: "2024",
