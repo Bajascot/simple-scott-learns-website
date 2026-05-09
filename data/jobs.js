@@ -147,7 +147,7 @@ const JOBS = [
         end: "2024",
         title: "Senior Product Manager, Retail Payments",
         description: "Led two development teams responsible for Nike's retail payment ecosystem across flagship, in-line, and outlet stores globally. The first team owned the legacy vendor-delivered POS system — a split implementation running on fixed front-counter terminals interfacing with payment hardware, and a mobile implementation running on Apple devices with portable card readers carried by store employees. Each ran on a separate codebase. The second team was building Nike's new in-house POS to replace the legacy system — a unified single-silo solution deployable to both fixed and mobile terminals. Worked closely with store employees to determine carry-over features, identify what could be retired, and define the new system's requirements from the ground up. Began laying the groundwork for a transition away from mobile card readers toward NFC-based payments directly on Apple devices. Additionally led negotiations with Nike's payment vendor to replace aging fixed payment terminals with newer models across US and European stores — working with the vendor and Nike leadership to align on terminal selection and negotiate pricing and support terms.",
-        tags: ["payments", "retail", "pos-systems", "vendor-management", "stakeholder-management", "team-leadership"]
+        tags: ["retail", "vendor-management", "vendor-negotiations", "pos-systems", "multi-team-management"]
       },
       {
         start: "2024",
