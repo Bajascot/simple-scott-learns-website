@@ -89,8 +89,8 @@ const JOBS = [
     ]
   },
   {
-    id: "tanger-guild",
-    company: "Tanger Guild",
+    id: "tagnor-guild",
+    company: "Tagnor Guild",
     location: "Portland, OR",
     startYear: 2015,
     endYear: 2016,
