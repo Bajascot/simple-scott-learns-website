@@ -49,6 +49,20 @@ const PROJECTS = [
       "images/projects/the-shed/ventilation.jpg"
     ],
     standaloneLink: "projects/the-shed.html"
+  },
+  {
+    id: "printfarm-tracker",
+    type: "personal",
+    title: "3D Printer Consumables Tracker",
+    status: "in-progress",
+    year: "2026",
+    summary: "A locally-hosted 3D print farm tracker running on a Raspberry Pi. Tracks filament inventory, calculates per-print costs using filament weight and energy consumption, monitors printer runtime, and integrates with Klipper/Moonraker printers and Govee smart plugs.",
+    tags: ["3d-printing", "raspberry-pi", "python", "react", "maker"],
+    whatWasTheNeed: "Running multiple 3D printers means burning through filament fast — and having no real idea what anything actually costs. I knew roughly what spools cost and roughly how long prints took, but I had no way to connect those numbers into a true cost-per-print. I also had no central place to see what filament I had on hand, what was running low, and what jobs had been completed across all my printers. The hobby needed a system.",
+    whyTheSolution: "The solution is a locally-hosted web application running on a Raspberry Pi inside the shed — keeping everything on the local network without any cloud dependency. The backend is built in Python with FastAPI, the frontend in React, and data is stored in SQLite. The tracker integrates directly with Moonraker/Klipper to automatically detect when a print starts and ends, polls Govee smart plugs every 60 seconds to accumulate real energy consumption per job, and watches a slicer output folder for new gcode files to pre-populate job records. The result is a per-print cost calculated from actual filament weight used and actual electricity consumed — not estimates.",
+    otherHalf: "This project is the first time I've built something technical entirely for myself, from scratch, with no brief and no stakeholder. Every decision — the tech stack, the architecture, the features — was mine. That's a different kind of challenge than product management, where the goal is usually to constrain and focus. Here the constraint had to come from me. It's taught me a lot about how hard it actually is to define scope when no one's asking you to ship anything by a particular date. Still in progress — and that's part of the point.",
+    images: [],
+    standaloneLink: "projects/printfarm-tracker.html"
   }
 ];
 
