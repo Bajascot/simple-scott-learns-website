@@ -232,15 +232,6 @@
         Why the Solution
       </div>
       <p>The solution is a locally-hosted web application running on a Raspberry Pi inside the shed — keeping everything on the local network without any cloud dependency. The backend is built in Python with FastAPI, the frontend in React, and data is stored in SQLite. The tracker integrates directly with Moonraker/Klipper to automatically detect when a print starts and ends, polls Govee smart plugs every 60 seconds to accumulate real energy consumption per job, and watches a slicer output folder for new gcode files to pre-populate job records. The result is a per-print cost calculated from actual filament weight used and actual electricity consumed — not estimates.</p>
-      <div class="tech-stack">
-        <span class="tech-pill">Python</span>
-        <span class="tech-pill">FastAPI</span>
-        <span class="tech-pill">React</span>
-        <span class="tech-pill">SQLite</span>
-        <span class="tech-pill">Raspberry Pi</span>
-        <span class="tech-pill">Moonraker / Klipper</span>
-        <span class="tech-pill">Govee API</span>
-      </div>
     </div>
 
     <!-- The Other Half -->
