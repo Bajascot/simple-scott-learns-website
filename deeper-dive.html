@@ -281,7 +281,7 @@
           </div>
           <div class="job-summary">${job.summary}</div>
           <div class="progressions">
-            ${job.progressions.map(p => `
+            ${[...job.progressions].reverse().map(p => `
               <div class="progression-item">
                 <div class="progression-spine">
                   <div class="progression-dot"></div>
