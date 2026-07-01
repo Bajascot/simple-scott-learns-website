@@ -222,7 +222,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         What Was the Need
       </div>
-      <p>Running multiple 3D printers means burning through filament fast — and having no real idea what anything actually costs. I knew roughly what spools cost and roughly how long prints took, but I had no way to connect those numbers into a true cost-per-print. I also had no central place to see what filament I had on hand, what was running low, and what jobs had been completed across all my printers. The hobby needed a system.</p>
+      <p>Running multiple 3D printers means burning through filament fast, and having no real idea what anything actually costs. I knew roughly what spools cost and roughly how long prints took, but I had no way to connect those numbers into a true cost-per-print. I also had no central place to see what filament I had on hand, what was running low, and what jobs had been completed across all my printers. The hobby needed a system.</p>
     </div>
 
     <!-- Why the Solution -->
@@ -231,7 +231,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         Why the Solution
       </div>
-      <p>The solution is a locally-hosted web application running on a Raspberry Pi inside the shed — keeping everything on the local network without any cloud dependency. The backend is built in Python with FastAPI, the frontend in React, and data is stored in SQLite. The tracker integrates directly with Moonraker/Klipper to automatically detect when a print starts and ends, polls Govee smart plugs every 60 seconds to accumulate real energy consumption per job, and watches a slicer output folder for new gcode files to pre-populate job records. The result is a per-print cost calculated from actual filament weight used and actual electricity consumed — not estimates.</p>
+      <p>The solution is a locally-hosted web application running on a Raspberry Pi inside the shed, keeping everything on the local network without any cloud dependency. The backend is built in Python with FastAPI, the frontend in React, and data is stored in SQLite. The tracker integrates directly with Moonraker/Klipper to automatically detect when a print starts and ends, polls Govee smart plugs every 60 seconds to accumulate real energy consumption per job, and watches a slicer output folder for new gcode files to pre-populate job records. The result is a per-print cost calculated from actual filament weight used and actual electricity consumed, not estimates.</p>
     </div>
 
     <!-- The Other Half -->
@@ -240,7 +240,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4M12 16h.01"/></svg>
         The Other Half of the Story
       </div>
-      <p>This project is the first time I've built something technical entirely for myself, from scratch, with no brief and no stakeholder. Every decision — the tech stack, the architecture, the features — was mine. That's a different kind of challenge than product management, where the goal is usually to constrain and focus. Here the constraint had to come from me. It's taught me a lot about how hard it actually is to define scope when no one's asking you to ship anything by a particular date. Still in progress — and that's part of the point.</p>
+      <p>This project is the first time I've built something technical entirely for myself, from scratch, with no brief and no stakeholder. Every decision (the tech stack, the architecture, the features) was mine. That's a different kind of challenge than product management, where the goal is usually to constrain and focus. Here the constraint had to come from me. It's taught me a lot about how hard it actually is to define scope when no one's asking you to ship anything by a particular date. Still in progress, and that's part of the point.</p>
     </div>
 
     <!-- Metrics & Interface -->
@@ -249,7 +249,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         Metrics &amp; Interface
       </div>
-      <p style="color:#566880;font-style:italic;">Live metrics and interface screenshots coming soon — check back as the project progresses.</p>
+      <p style="color:#566880;font-style:italic;">Live metrics and interface screenshots coming soon, check back as the project progresses.</p>
     </div>
 
     <!-- GitHub link -->
@@ -261,7 +261,7 @@
       <p>This project is open source and actively being developed.</p>
       <a href="https://github.com/Bajascot/simple-scott-learns-printfarm-tracker" target="_blank" rel="noopener" class="github-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        View on GitHub — Bajascot/simple-scott-learns-printfarm-tracker
+        View on GitHub: Bajascot/simple-scott-learns-printfarm-tracker
       </a>
     </div>
 
