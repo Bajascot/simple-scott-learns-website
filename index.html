@@ -844,7 +844,7 @@
     // ── Timeline ────────────────────────────────────────────
     function renderTimeline() {
       const list = document.getElementById('timeline-list');
-      const jobs = [...JOBS]; // oldest first — tells the career journey
+      const jobs = [...JOBS].filter(j => j.id !== 'market-contractors'); // oldest first — tells the career journey (Market Contractors shown in Deeper Dive only)
       list.innerHTML = jobs.map(job => `
         <div class="tl-card" onclick="openModal('${job.id}')" role="button" tabindex="0"
              onkeydown="if(event.key==='Enter')openModal('${job.id}')">
